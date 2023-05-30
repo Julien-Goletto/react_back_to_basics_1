@@ -36,5 +36,21 @@
     }
 
     root.appendChild(Counter(0));
+
+    const FruitList = (fruits) => {
+
+      const fruitsList = document.createElement("ul");
+
+      fruits.forEach((fruit) => {
+        const newFruit = document.createElement('li');
+        newFruit.innerText = fruit;
+        fruitsList.appendChild(newFruit);
+      });
+
+      return fruitsList;
+    }
+
+    const fruits = ['banana', 'apple', 'strawberry'];
+    root.appendChild(FruitList(fruits));
   </script>
 </html>
