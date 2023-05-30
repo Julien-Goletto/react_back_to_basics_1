@@ -21,5 +21,20 @@
     const root = document.querySelector('#root');
     // 🦁 ajoute la div dans l'élément "root"
     root.appendChild(div);
+
+    const Counter = (initialValue) => {
+      const button = document.createElement("button");
+      button.innerText = initialValue ?? 0;
+
+      const onButtonClick = () => {
+        const previousValue = Number(button.innerText);
+        button.innerText = Number(previousValue + 1);
+      }
+
+      button.addEventListener('click', (onButtonClick));
+      return button;
+    }
+
+    root.appendChild(Counter(0));
   </script>
 </html>
