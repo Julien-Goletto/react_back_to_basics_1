@@ -18,19 +18,34 @@
   </body>
 
   <script>
+    const title = React.createElement('h1', null, "Lance la partie !");
     // 🦁 Crée un button avec comme id "start" et comme text à l'intérieur "Start !"
-    const onButtonClick = () => alert("J'ai démarré.");
-    const startButton = React.createElement('button', { id: 'start', onClick: onButtonClick}, 'Start 🚀');
+    const onStartButtonClick = () => alert("J'ai démarré.");
+    const startButton = React.createElement('button', { id: 'start', onClick: onStartButtonClick}, 'Start 🚀');
 
     // 🦁 Ajoute une événement "onClick" à notre button qui affiche une alert.
-    startButton.onClick = onButtonClick;
+    startButton.onClick = onStartButtonClick;
+
+    const onStopButtonClick = () => alert('On arrête la partie.');
+    const stopButton = React.createElement('button', {id: 'stop', onClick : onStopButtonClick}, 'Stop ⏹️');
+
+    const buttonWrapper = React.createElement('div', null, startButton, stopButton);
+
+    const FruitsList = (fruits) => {
+      const fruitsLi = fruits.map((fruit) => React.createElement('li', null, fruit));
+      const fruitsList = React.createElement('ul', null, ...fruitsLi);
+      return fruitsList;
+    }
+
+    const children = [title, buttonWrapper, FruitsList(['pomme', 'poire', 'fraise', 'cerise'])];
+    const wrapper = React.createElement('div', null, ...children)
 
     // 🦁 Crée une div : "elements" avec à l'intérieur le bouton.
-    const elements = React.createElement('div', { id: 'elements'}, startButton);
+    const elements = React.createElement('div', { id: 'elements'}, wrapper);
 
     const container = document.querySelector('#root');
     const root = ReactDOM.createRoot(container); // 🦁 Remplace `undefined` by `ReactDOM.createRoot(container);`
-    
+
     // 🦁 Utilise `root.render` pour afficher la div "elements"
     root.render(elements)
   </script>
