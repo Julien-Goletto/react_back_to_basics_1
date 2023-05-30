@@ -14,7 +14,9 @@
     // 🦁 crée une div
     const div = document.createElement('div');
     // 🦁 ajoute le text "Hello 👋" dedans
-    div.textContent = "Hello";
+    div.textContent = "Hello 👋";
+    div.addEventListener('click', () => alert("Tu as cliqué sur Hello"));
+    div.style.cursor = 'pointer';
     // 🦁 récupère l'élément "root"
     const root = document.querySelector('#root');
     // 🦁 ajoute la div dans l'élément "root"
